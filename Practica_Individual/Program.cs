@@ -40,7 +40,7 @@ namespace Practica_Individual
                         usuario.JugarTraga();
                      break;
                     case 2:
-                        admin.MostrarPremios();
+                        usuario.MostrarPremios();
                         break;
                     case 3:
                         usuario.CargarPremios();
