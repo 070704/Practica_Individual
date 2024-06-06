@@ -11,9 +11,10 @@ namespace Practica_Individual
     {
         static void Main(string[] args)
         {
+            int option = 0;
             do
             {
-                
+               
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\t==================================");
@@ -32,37 +33,38 @@ namespace Practica_Individual
                 Console.WriteLine("\t╚═══════════════════════════════╝");
                 Console.WriteLine();
                 Console.Write("\tPor favor, introduzca su opción: ");
-                int option = int.Parse(Console.ReadLine());
+                option = int.Parse(Console.ReadLine());
 
                 switch (option)
                 {
                     case 1:
-                        usuario.JugarTraga();
-                     break;
+                        JugarTraga();
+                        break;
                     case 2:
-                        usuario.MostrarPremios();
+                        MostrarPremios();
                         break;
                     case 3:
-                        usuario.CargarPremios();
-                    break;
-                    default :
+                        CargarPremios();
+                        break;
+                    default:
                         Console.WriteLine("Opción no válida");
                         break;
                 }
+               
+            } while (option != 4);
 
-            } while (option != 5);
 
-           
+
         }
-        public void JugarTraga()
+        public static void JugarTraga()
         {
 
         }
-        public void MostrarPremios()
+        public static void MostrarPremios()
         {
 
         }
-        public void CargarPremios()
+        public static void CargarPremios()
         {
 
         }
