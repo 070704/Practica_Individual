@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,13 +46,32 @@ namespace Practica_Individual
             var path = Console.ReadLine();
             if(File.Exists(path))
             {
-                string [] cargapremios = File.ReadAllLines(path);
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string line = null;
                     string[] campos = null; 
-                    while ((line = sr.ReadLine()) != null) { }
+                    while ((line = sr.ReadLine()) != null) 
+                    {
+                        campos = line.Split(';');
+                        switch(int.Parse(campos[0]))
+                        {
+                            case 1: 
+                                Premio_Simple ps = new Premio_Simple(campos[1], campos[2], int.Parse(campos[3]), int.Parse(campos[4]),int.Parse(campos[5]), int.Parse(campos[6]));
+                                Premios.Add(ps);
+                                break;
+                            case 2:
+                                Premio_Aleatorio pa = new Premio_Aleatorio(campos[1], campos[2], double.Parse(campos[3]), campos[4], int.Parse(campos[5]), int.Parse(campos[6]), int.Parse(campos[7]), int.Parse(campos[8]));
+                                Premios.Add(pa);
+                                break;
+
+                        }
+
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine("No se han encontrado los premios :( ");
             }
         }
        
