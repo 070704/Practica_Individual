@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
-    <Compile Include="Ludopata.cs" />
     <Compile Include="Premio.cs" />
     <Compile Include="Premio_Aleatorio.cs" />
     <Compile Include="Premio_Simple.cs" />

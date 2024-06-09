@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Practica_Individual
 {
     internal class Program
     {
+        static List<Premio> premios;
+        static List<Premio> Premios_Actuales;
+        static Random ramdom = new Random();
+        Admin admin = new Admin(Premios_Actuales,"admin123", premios);
         static void Main(string[] args)
         {
             int option = 0;
@@ -44,7 +49,8 @@ namespace Practica_Individual
                         MostrarPremios();
                         break;
                     case 3:
-                        CargarPremios();
+                        Admin.Autentification();
+                        Admin.CargarPremios();
                         break;
                     default:
                         Console.WriteLine("Opción no válida");
@@ -56,8 +62,35 @@ namespace Practica_Individual
 
 
         }
-        public static void JugarTraga()
+        public static  void JugarTraga()
         {
+            int rodillo1 = ramdom.Next(0, 21);
+            int rodillo2 = ramdom.Next(0, 21);
+            int rodillo3 = ramdom.Next(0, 21);
+
+
+            if (rodillo1 == rodillo2 && rodillo2 == rodillo3)
+            {
+                var path = Console.ReadLine();
+                if (File.Exists(path))
+                {
+                    using (StreamReader sr = new StreamReader(path))
+                    {
+                        string line = null;
+                        string[] campos = null;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            campos = line.Split(';');
+                            if (rodillo1 == int.Parse(campos[2]) && rodillo2 == int.Parse(campos[2]) && rodillo3 == int.Parse(campos[2])) ;
+                            {
+                                Console.WriteLine(campos[5]);
+                            }
+
+                        }
+                    }
+                }
+            }
+
 
         }
         public static void MostrarPremios()

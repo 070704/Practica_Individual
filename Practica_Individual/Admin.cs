@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Practica_Individual
 {
-    internal class Admin : Usuario
+    internal class Admin : Usuario 
     {
+        private static string Password = "admin123";
+        public  List<Premio> PremiosActuales { get; private set; }
 
-        private string  Password { get; set; }  
-        public List<Premio> PremiosActuales { get;private set; }
-
-        public Admin(List<Premio>premios_actuales, string password, List<Premio> premios) : base(premios)
+        public Admin(List<Premio> premios_actuales, string password, List<Premio> premios) : base(premios)
         {
             Password = password;
-            PremiosActuales = premios_actuales; 
+            PremiosActuales = premios_actuales;
         }
         public Admin() { }
 
-        public override void Menu()
+        public  static void Autentification()
         {
             Console.WriteLine();
             Console.Write("\tIntroduce una contraseña: ");
@@ -40,23 +37,23 @@ namespace Practica_Individual
 
         }
 
-        public void CargarPremios() //Cargamos los premios con el archivo CSV
+        public static  void CargarPremios() //Cargamos los premios con el archivo CSV
         {
             Console.Write("Introduce la dirección del archivo: ");
             var path = Console.ReadLine();
-            if(File.Exists(path))
+            if (File.Exists(path))
             {
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string line = null;
-                    string[] campos = null; 
-                    while ((line = sr.ReadLine()) != null) 
+                    string[] campos = null;
+                    while ((line = sr.ReadLine()) != null)
                     {
                         campos = line.Split(';');
-                        switch(int.Parse(campos[0]))
+                        switch (int.Parse(campos[0]))
                         {
-                            case 1: 
-                                Premio_Simple ps = new Premio_Simple(campos[1], campos[2], int.Parse(campos[3]), int.Parse(campos[4]),int.Parse(campos[5]), int.Parse(campos[6]));
+                            case 1:
+                                Premio_Simple ps = new Premio_Simple(campos[1], campos[2], int.Parse(campos[3]), int.Parse(campos[4]), int.Parse(campos[5]), int.Parse(campos[6]));
                                 Premios.Add(ps);
                                 break;
                             case 2:
@@ -74,10 +71,5 @@ namespace Practica_Individual
                 Console.WriteLine("No se han encontrado los premios :( ");
             }
         }
-       
-
-        
-
-
     }
 }

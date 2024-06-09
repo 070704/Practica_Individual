@@ -8,7 +8,7 @@ namespace Practica_Individual
 {
     internal abstract  class Usuario 
     {
-        protected List <Premio> Premios = new List <Premio> ();
+        protected static List <Premio> Premios = new List <Premio> ();
         public Usuario() { }
 
         public Usuario (List<Premio> premios)
@@ -16,9 +16,7 @@ namespace Practica_Individual
             Premios = premios;
 
         }
-        public abstract void Menu();
         
-
         
     }
 }
