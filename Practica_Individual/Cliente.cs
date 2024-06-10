@@ -1,30 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace Practica_Individual
 {
-    internal class Program
+    internal class Cliente : Usuario
     {
-        static List<Premio> premios;
-        
-        static Random ramdom = new Random();
-        
-        static void Main(string[] args)
+        public Cliente(List<Premio> premios) : base(premios)
         {
-            premios = new List<Premio>();
-            Admin admin = new Admin("admin123", premios);
-            Cliente cliente = new Cliente(premios); 
-            
 
-            int option = 0;
+        }
+
+        public Cliente() { }
+
+        public override void Menu()
+        {
+           
+            
+            int opcion = 0;
             do
             {
-                
+
 
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -34,40 +32,37 @@ namespace Practica_Individual
                 Console.WriteLine();
                 Console.ResetColor();
                 Console.WriteLine("\t╔═══════════════════════════════╗");
-                Console.WriteLine("\t║ 1.- Cliente                   ║");
+                Console.WriteLine("\t║ 1.- Jugar                     ║");
                 Console.WriteLine("\t║                               ║");
-                Console.WriteLine("\t║ 2.- Admin                     ║");
+                Console.WriteLine("\t║ 2.- Mostrar Información       ║");
                 Console.WriteLine("\t║                               ║");
                 Console.WriteLine("\t║ 3.- Salir                     ║");
                 Console.WriteLine("\t║                               ║");
                 Console.WriteLine("\t╚═══════════════════════════════╝");
                 Console.WriteLine();
                 Console.Write("\tPor favor, introduzca su opción: ");
-                option = int.Parse(Console.ReadLine());
+                opcion = int.Parse(Console.ReadLine());
 
-                switch (option)
+                switch (opcion)
                 {
                     case 1:
-                        cliente.Menu();
+                       JugarTraga();
                         break;
                     case 2:
-                        admin.Menu();
+                        MostrarInfo();
                         break;
                     case 3:
                         Console.WriteLine("Saliendo...");
                         break;
-                    
-                }
-               
-            } while (option != 4);
 
+                } 
+
+            } while (opcion != 4);
 
 
         }
 
-        public static void CargarPremios()
-        {
-
-        }
     }
 }
+
+

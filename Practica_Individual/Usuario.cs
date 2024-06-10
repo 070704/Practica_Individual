@@ -16,6 +16,17 @@ namespace Practica_Individual
             Premios = premios;
 
         }
+        public abstract void Menu();
+
+        public void JugarTraga()
+        {
+
+        }
+
+        public void MostrarInfo()
+        {
+
+        }
         
         
     }
