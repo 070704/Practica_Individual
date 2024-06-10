@@ -10,7 +10,7 @@ namespace Practica_Individual
 {
     internal class Admin : Usuario 
     {
-        private static string Password = "admin123";
+        private  string Password;
         public  List<Premio> PremiosActuales { get; private set; }
 
         public Admin(List<Premio> premios_actuales, string password, List<Premio> premios) : base(premios)
@@ -20,7 +20,7 @@ namespace Practica_Individual
         }
         public Admin() { }
 
-        public  static void Autentification()
+        public  void Autentification()
         {
             Console.WriteLine();
             Console.Write("\tIntroduce una contraseña: ");
@@ -37,7 +37,7 @@ namespace Practica_Individual
 
         }
 
-        public static  void CargarPremios() //Cargamos los premios con el archivo CSV
+        public  void CargarPremios() //Cargamos los premios con el archivo CSV
         {
             Console.Write("Introduce la dirección del archivo: ");
             var path = Console.ReadLine();
