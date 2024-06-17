@@ -17,6 +17,7 @@ namespace Practica_Individual
         static void Main(string[] args)
         {
             premios = new List<Premio>();
+            CargarPremios();
             Admin admin = new Admin("admin123", premios);
             Cliente cliente = new Cliente(premios); 
             
@@ -67,7 +68,32 @@ namespace Practica_Individual
 
         public static void CargarPremios()
         {
-
+            if (File.Exists("premios.txt"))
+            {
+               using (StreamReader sr = new StreamReader("premios.txt"))
+                {
+                    string line = null;
+                    string[] campos = null;
+                    while((line = sr.ReadLine()) != null) 
+                    {
+                        campos = line.Split(';');
+                        switch (int.Parse(campos[0]))
+                        {
+                            case 1:
+                                Premio_Simple ps = new Premio_Simple(premios.Count, campos[1], campos[2], int.Parse(campos[3]), campos[4], campos[5], campos[6]);
+                                premios.Add(ps);
+                                break;
+                            case 2:
+                                Premio_Aleatorio pa = new Premio_Aleatorio(premios.Count, campos[1], campos[2], double.Parse(campos[3]), campos[4], int.Parse(campos[5]),
+                                    campos[6], campos[7], campos[8]);
+                                premios.Add(pa);
+                                break;
+                        }
+                    }
+                }
+            }
+            
+            
         }
     }
 }

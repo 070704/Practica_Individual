@@ -9,13 +9,13 @@ namespace Practica_Individual
 {
     internal abstract  class Usuario 
     {
-        private int[,] rodillos;
-        private Random random;
-        protected static List <Premio> Premios = new List <Premio> ();
+      
+        protected List<Premio> Premios;
         public Usuario() { }
 
         public Usuario (List<Premio> premios)
         {
+            Premios = new List<Premio>();
             Premios = premios;
 
         }
@@ -23,35 +23,55 @@ namespace Practica_Individual
 
         public void JugarTraga()
         {
-            rodillos = new int[3,3];
-            random = new Random();
-
-            for(int i = 0;i < 3; i++)
+            string[,] rodillos = new string[3, 3];
+            Random random =new Random();
+            string[] simbolosRodillos = { "*", "10", "0" };
+            for (int i = 0; i < 3; i++)
             {
-                for(int j = 0;j < 3;j++)
+                for (int j = 0; j < 3; j++)
                 {
-                    rodillos[i,j] = random.Next(1,7);
-                    Console.WriteLine($"{rodillos[i,j]}");
+                    rodillos[i, j] = simbolosRodillos[random.Next(0, 3)];
+                    Console.WriteLine($"{rodillos[i, j]}");
                 }
 
             }
-           
+            bool premioGanado = false;
+
+            foreach (var premio in Premios)
+            {
+                if (rodillos[1, 0] == premio.Simbolo1 && rodillos[1, 1] == premio.Simbolo2 && rodillos[1, 2] == premio.Simbolo3)
+                {
+                    Console.WriteLine($"¡Ganaste! Premio: {premio.Nombre}");
+                    premioGanado = true;
+                }
+            }
+
+            if (!premioGanado)
+            {
+                Console.WriteLine("No has ganado esta vez.");
+            }
+
 
 
         }
 
         public void MostrarInfo()
         {
-            foreach (var premio in Premios)
+            foreach (Premio p in Premios)
             {
-                if (rodillos[1, 0] == premio.Simbolo1 && rodillos[1, 1] == premio.Simbolo2 && rodillos[1, 2] == premio.Simbolo3)
+                Console.WriteLine($"{p.id} | {p.Nombre} | {p.Simbolo1} | {p.Simbolo2} | {p.Simbolo3}");
+            }
+            Console.WriteLine();
+            Console.Write("\t Introduce el Id: ");
+            int id = int.Parse( Console.ReadLine() );
+
+            foreach(Premio premio in Premios)
+            {
+                if(premio.id == id)
                 {
-                    Console.WriteLine($"¡Ganaste! Premio: {premio.Nombre}");
-                    
-                    return;
+                    premio.MostrarInfo();
                 }
             }
-            Console.WriteLine("No has ganado esta vez.");
         }
     }
         

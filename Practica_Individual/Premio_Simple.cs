@@ -10,7 +10,7 @@ namespace Practica_Individual
     {
         public string Consejo { get; set; }
 
-        public Premio_Simple(string consejo, string nombre, int tipo_Premio, int simbolo1, int simbolo2, int simbolo3) : base(nombre, tipo_Premio, simbolo1, simbolo2, simbolo3)
+        public Premio_Simple(int id,string consejo, string nombre, int tipo_Premio, string simbolo1, string simbolo2, string simbolo3) : base(id,nombre, tipo_Premio, simbolo1, simbolo2, simbolo3)
         {
             Consejo = consejo;
         }
@@ -18,9 +18,13 @@ namespace Practica_Individual
         public override string MostrarConsejo()
         {
             return Consejo;
+        }
 
+        public override string MostrarInfo()
+        {
+            return $"Premio Simple | {base.MostrarInfo()} | Consejo: {Consejo}";
+        }
 
-         }
 
     }
 }
