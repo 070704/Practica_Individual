@@ -55,24 +55,31 @@ namespace Practica_Individual
                     Console.WriteLine("\t╚═══════════════════════════════╝");
                     Console.WriteLine();
                     Console.Write("\tPor favor, introduzca su opción: ");
-                    opcion = int.Parse(Console.ReadLine());
-
-                    switch (opcion)
+                    try
                     {
-                        case 1:
-                            JugarTraga();
-                            break;
-                        case 2:
-                            MostrarInfo();
-                            break;
-                        case 3:
-                            CargarPremios();
-                            break;
-                        case 4:
-                            Console.WriteLine("Saliendo...");
-                            break;
+                        opcion = int.Parse(Console.ReadLine());
 
-                    } 
+                        switch (opcion)
+                        {
+                            case 1:
+                                JugarTraga();
+                                break;
+                            case 2:
+                                MostrarInfo();
+                                break;
+                            case 3:
+                                CargarPremios();
+                                break;
+                            case 4:
+                                Console.WriteLine("Saliendo...");
+                                break;
+
+                        }
+                    }
+                    catch(FormatException)
+                    {
+                        Console.WriteLine("Seleccione una opción válida");
+                    }
 
                 } while (opcion != 4);
 
