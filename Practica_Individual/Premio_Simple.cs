@@ -10,7 +10,7 @@ namespace Practica_Individual
     {
         public string Consejo { get; set; }
 
-        public Premio_Simple(int id,string consejo, string nombre, int tipo_Premio, string simbolo1, string simbolo2, string simbolo3) : base(id,nombre, tipo_Premio, simbolo1, simbolo2, simbolo3)
+        public Premio_Simple(int id,string nombre, string simbolo1, string simbolo2, string simbolo3, string consejo) : base(id,nombre, simbolo1, simbolo2, simbolo3)
         {
             Consejo = consejo;
         }

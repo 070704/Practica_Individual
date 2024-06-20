@@ -103,11 +103,11 @@ namespace Practica_Individual
                         switch (int.Parse(campos[0]))
                         {
                             case 1:
-                                Premio_Simple ps = new Premio_Simple(campos[1], campos[2], int.Parse(campos[3]),campos[4],campos[5],campos[6]);
+                                Premio_Simple ps = new Premio_Simple(int.Parse(campos[0]),campos[1], campos[2], campos[3], campos[4], campos[5]);
                                 Premios.Add(ps);
                                 break;
                             case 2:
-                                Premio_Aleatorio pa = new Premio_Aleatorio(campos[1], campos[2], double.Parse(campos[3]), campos[4], int.Parse(campos[5]), campos[6],campos[7],campos[8]);
+                                Premio_Aleatorio pa = new Premio_Aleatorio(int.Parse(campos[0]),campos[1], campos[2], campos[3], campos[4],campos[5], campos[6],int.Parse(campos[7]));
                                 Premios.Add(pa);
                                 break;
 
@@ -120,6 +120,10 @@ namespace Practica_Individual
             {
                 Console.WriteLine("No se han encontrado los premios :( ");
             }
+        }
+        public void GuardarPremios()
+        {
+
         }
     }
 }
