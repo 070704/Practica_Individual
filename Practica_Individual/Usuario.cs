@@ -32,6 +32,7 @@ namespace Practica_Individual
                 {
                     rodillos[i, j] = simbolosRodillos[random.Next(0, 3)];
                     Console.WriteLine($"{rodillos[i, j]}");
+                    Console.ReadKey();
                 }
 
             }
@@ -43,12 +44,14 @@ namespace Practica_Individual
                 {
                     Console.WriteLine($"¡Ganaste! Premio: {premio.Nombre}");
                     premioGanado = true;
+                    Console.ReadKey();
                 }
             }
 
             if (!premioGanado)
             {
                 Console.WriteLine("No has ganado esta vez.");
+                Console.ReadKey();
             }
 
 
