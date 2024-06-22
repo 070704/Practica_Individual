@@ -53,8 +53,11 @@ namespace Practica_Individual
                         case 2:
                             MostrarInfo();
                             break;
+
                         case 3:
-                            Console.WriteLine("Saliendo...");
+                           
+
+                            
                             break;
 
                     }

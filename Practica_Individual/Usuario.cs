@@ -23,26 +23,34 @@ namespace Practica_Individual
 
         public void JugarTraga()
         {
+            //Creo un Array donde indico el tamaño que va a tener mi matriz//
             string[,] rodillos = new string[3, 3];
             Random random =new Random();
-            string[] simbolosRodillos = { "*", "10", "0" };
+            //Indico los valores que quiero que tenga mi matriz//
+            string[] simbolosRodillos = { "*", "10", "0","?","@","-","o" };
+         
+            //Hago un bucle for anidado para poder recorrer mi matriz 3 x 3//
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    rodillos[i, j] = simbolosRodillos[random.Next(0, 3)];
-                    Console.WriteLine($"{rodillos[i, j]}");
-                    Console.ReadKey();
+                    rodillos[i, j] = simbolosRodillos[random.Next(0, simbolosRodillos.Length)]; //Lenght indica la longitud de mi string []//
+                    Console.Write($"{rodillos[i, j]}");
+                    //Importante poner un Console.Write para que me muestre la matriz en filas y en columnas//
                 }
+                Console.WriteLine();
 
             }
+           
             bool premioGanado = false;
-
+            //Genero un dato de tipo booleano para cuando toque un premio//
             foreach (var premio in Premios)
             {
+                //Hago un for each para recorrer la matriz y creo una condición para que cuando coincidan los elementos de la matriz me muestre que he ganado un premio//
                 if (rodillos[1, 0] == premio.Simbolo1 && rodillos[1, 1] == premio.Simbolo2 && rodillos[1, 2] == premio.Simbolo3)
                 {
-                    Console.WriteLine($"¡Ganaste! Premio: {premio.Nombre}");
+                    //Cada vez que salga un premio me muestra un consejo si es el consejo aleatorio me puede mostrar un tipo de consejo//
+                    Console.WriteLine($"¡Ganaste! Premio: {premio.Nombre},{premio.MostrarConsejo()}");
                     premioGanado = true;
                     Console.ReadKey();
                 }
@@ -60,6 +68,7 @@ namespace Practica_Individual
 
         public void MostrarInfo()
         {
+            //Pido que me muestre la información de los distintos premios que da la máquina y cuales son las condiciones para obtenerlos//
             foreach (Premio p in Premios)
             {
                 Console.WriteLine($"{p.id} | {p.Nombre} | {p.Simbolo1} | {p.Simbolo2} | {p.Simbolo3}");
@@ -67,6 +76,7 @@ namespace Practica_Individual
             Console.WriteLine();
             Console.Write("\t Introduce el Id: ");
             int id = int.Parse( Console.ReadLine() );
+            Console.ReadKey();
 
             foreach(Premio premio in Premios)
             {

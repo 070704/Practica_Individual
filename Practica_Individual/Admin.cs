@@ -22,12 +22,13 @@ namespace Practica_Individual
 
         public override  void Menu()
         {
+            //Contraseña para que solo pueda acceder el administrador al menú de la clase Admin//
             Console.WriteLine();
             Console.Write("\tIntroduce una contraseña: ");
             string password = Console.ReadLine();
             if (password != Password)
             {
-                Console.Write("\tContraseña incorrecta");
+                Console.Write("\tContraseña incorrecta");             
                 Thread.Sleep(2000);
             }
             else
@@ -36,7 +37,7 @@ namespace Practica_Individual
                 do
                 {
 
-
+                    
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\t==================================");

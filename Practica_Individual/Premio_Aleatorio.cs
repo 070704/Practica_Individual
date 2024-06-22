@@ -23,8 +23,10 @@ namespace Practica_Individual
             //Al ser un premio aleatorio creamos un dato Ramdom
 
             Random random = new Random();
+            //Creo un ramdom para que el programa me muestre o el consejo 1 o el consejo 2//
 
             return random.Next(0, 100) < Probabilidad * 100 ? Consejo1 : Consejo2;
+            
         }
 
         public override string MostrarInfo()

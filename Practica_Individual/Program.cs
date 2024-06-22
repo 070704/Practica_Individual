@@ -76,6 +76,7 @@ namespace Practica_Individual
 
         public static void CargarPremios()
         {
+
             if (File.Exists("premios.txt"))
             {
                using (StreamReader sr = new StreamReader("premios.txt"))
