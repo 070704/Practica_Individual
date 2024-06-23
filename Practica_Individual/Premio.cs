@@ -29,6 +29,10 @@ namespace Practica_Individual
         {
             return $"Nombre: {Nombre} | Primer Símbolo: {Simbolo1} | Segundo Símbolo: {Simbolo2} | Tercer Símbolo: {Simbolo3}";
         }
+        public override string ToString()
+        {
+            return $"{Nombre};{Simbolo1};{Simbolo2};{Simbolo3}";
+        }
 
     }
 

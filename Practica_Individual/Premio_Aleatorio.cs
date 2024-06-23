@@ -33,5 +33,9 @@ namespace Practica_Individual
         {
             return $"Premio Aleatorio | {base.MostrarInfo()} | Primer Consejo: {Consejo1} | Segundo consejo: {Consejo2} | Probabilidad: {Probabilidad}";
         }
+        public override string ToString()
+        {
+            return $"2{base.ToString()};{Consejo1};{Consejo2};{Probabilidad}";
+        }
     }
 }

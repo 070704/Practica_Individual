@@ -52,7 +52,7 @@ namespace Practica_Individual
                     Console.WriteLine("\t║                               ║");
                     Console.WriteLine("\t║ 3.- Cargar Premios            ║");
                     Console.WriteLine("\t║                               ║");
-                    Console.WriteLine("\t║ 4.- Salir                     ║");
+                    Console.WriteLine("\t║ 4.- Guardar Premios           ║");
                     Console.WriteLine("\t╚═══════════════════════════════╝");
                     Console.WriteLine();
                     Console.Write("\tPor favor, introduzca su opción: ");
@@ -72,7 +72,7 @@ namespace Practica_Individual
                                 CargarPremios();
                                 break;
                             case 4:
-                                Console.WriteLine("Saliendo...");
+                                GuardarPremios();
                                 break;
 
                         }
@@ -96,6 +96,7 @@ namespace Practica_Individual
             {
                 using (StreamReader sr = new StreamReader(path))
                 {
+                    Premios.Clear();
                     string line = null;
                     string[] campos = null;
                     while ((line = sr.ReadLine()) != null)
@@ -105,11 +106,11 @@ namespace Practica_Individual
                         {
                             case 1:
                                 //Campos que tiene el archivo importante que coincidan con el txt//
-                                Premio_Simple ps = new Premio_Simple(int.Parse(campos[0]),campos[1], campos[2], campos[3], campos[4], campos[5]);
+                                Premio_Simple ps = new Premio_Simple(Premios.Count(),campos[1], campos[2], campos[3], campos[4], campos[5]);
                                 Premios.Add(ps);
                                 break;
                             case 2:
-                                Premio_Aleatorio pa = new Premio_Aleatorio(int.Parse(campos[0]),campos[1], campos[2], campos[3], campos[4],campos[5], campos[6],int.Parse(campos[7]));
+                                Premio_Aleatorio pa = new Premio_Aleatorio(Premios.Count(),campos[1], campos[2], campos[3], campos[4],campos[5], campos[6],double.Parse(campos[7]));
                                 Premios.Add(pa);
                                 break;
 
@@ -125,7 +126,13 @@ namespace Practica_Individual
         }
         public void GuardarPremios()
         {
-
+            using(StreamWriter sw = new StreamWriter("premios.txt", false))
+            {
+                foreach(Premio p in Premios)
+                {
+                    sw.WriteLine(p.ToString()); 
+                }
+            }
         }
     }
 }

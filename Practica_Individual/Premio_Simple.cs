@@ -24,6 +24,10 @@ namespace Practica_Individual
         {
             return $"Premio Simple | {base.MostrarInfo()} | Consejo: {Consejo}";
         }
+        public override string ToString()
+        {
+            return $"1{base.ToString()};{Consejo};";
+        }
 
 
     }
