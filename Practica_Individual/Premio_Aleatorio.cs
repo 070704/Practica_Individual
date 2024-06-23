@@ -35,7 +35,7 @@ namespace Practica_Individual
         }
         public override string ToString()
         {
-            return $"2{base.ToString()};{Consejo1};{Consejo2};{Probabilidad}";
+            return $"2;{base.ToString()};{Consejo1};{Consejo2};{Probabilidad}";
         }
     }
 }

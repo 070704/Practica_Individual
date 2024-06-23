@@ -26,7 +26,7 @@ namespace Practica_Individual
         }
         public override string ToString()
         {
-            return $"1{base.ToString()};{Consejo};";
+            return $"1;{base.ToString()};{Consejo};;";
         }
 
 
