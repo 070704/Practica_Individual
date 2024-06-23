@@ -91,38 +91,42 @@ namespace Practica_Individual
         public  void CargarPremios() //Cargamos los premios con el archivo CSV
         {
             Console.Write("Introduce la dirección del archivo: ");
-            var path = Console.ReadLine();
-            if (File.Exists(path))
-            {
-                using (StreamReader sr = new StreamReader(path))
+           
+                var path = Console.ReadLine();
+                if (File.Exists(path))
                 {
-                    Premios.Clear();
-                    string line = null;
-                    string[] campos = null;
-                    while ((line = sr.ReadLine()) != null)
+                    using (StreamReader sr = new StreamReader(path))
                     {
-                        campos = line.Split(';');
-                        switch (int.Parse(campos[0]))
+                        Premios.Clear();
+                        string line = null;
+                        string[] campos = null;
+                        while ((line = sr.ReadLine()) != null)
                         {
-                            case 1:
-                                //Campos que tiene el archivo importante que coincidan con el txt//
-                                Premio_Simple ps = new Premio_Simple(Premios.Count(),campos[1], campos[2], campos[3], campos[4], campos[5]);
-                                Premios.Add(ps);
-                                break;
-                            case 2:
-                                Premio_Aleatorio pa = new Premio_Aleatorio(Premios.Count(),campos[1], campos[2], campos[3], campos[4],campos[5], campos[6],double.Parse(campos[7]));
-                                Premios.Add(pa);
-                                break;
+                            campos = line.Split(';');
+                            switch (int.Parse(campos[0]))
+                            {
+                                case 1:
+                                    //Campos que tiene el archivo importante que coincidan con el txt//
+                                    Premio_Simple ps = new Premio_Simple(Premios.Count(), campos[1], campos[2], campos[3], campos[4], campos[5]);
+                                    Premios.Add(ps);
+                                    break;
+                                case 2:
+                                    Premio_Aleatorio pa = new Premio_Aleatorio(Premios.Count(), campos[1], campos[2], campos[3], campos[4], campos[5], campos[6], double.Parse(campos[7]));
+                                    Premios.Add(pa);
+                                    break;
+
+                            }
 
                         }
-
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("No se han encontrado los premios :( ");
-            }
+                else
+                {
+                    Console.WriteLine("No se han encontrado los premios :( ");
+                }
+           
+            
+            
         }
         public void GuardarPremios()
         {

@@ -74,21 +74,31 @@ namespace Practica_Individual
                 Console.WriteLine($"{p.id} | {p.Nombre} | {p.Simbolo1} | {p.Simbolo2} | {p.Simbolo3}");
             }
             Console.WriteLine();
-            Console.Write("\t Introduce el Id: ");
-            int id = int.Parse( Console.ReadLine() );
-            Console.ReadKey();
-
-            foreach(Premio premio in Premios)
+            try 
             {
-                if(premio.id == id)
+                Console.Write("\t Introduce el Id: ");
+
+                int id = int.Parse(Console.ReadLine());
+
+
+                foreach (Premio premio in Premios)
                 {
-                    premio.MostrarInfo();
+                    if (premio.id == id)
+                    {
+                        Console.WriteLine(premio.MostrarInfo());
+                    }
+
                 }
+                Console.ReadKey();
+            } 
+            catch(FormatException)
+            {
+                Console.WriteLine("Por favor introduce un Id");
             }
         }
+            
     }
         
-        
-    }
+}
  
 

@@ -35,6 +35,7 @@ namespace Practica_Individual
         }
         public override string ToString()
         {
+            //Me creo una función para guardar el objeto en el archivo deseado//
             return $"2;{base.ToString()};{Consejo1};{Consejo2};{Probabilidad}";
         }
     }
