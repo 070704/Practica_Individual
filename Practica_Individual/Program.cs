@@ -18,6 +18,7 @@ namespace Practica_Individual
         {
             premios = new List<Premio>();
             CargarPremios();
+            //Contraseña para admin//
             Admin admin = new Admin("admin123", premios);
             Cliente cliente = new Cliente(premios); 
             
@@ -26,7 +27,7 @@ namespace Practica_Individual
             do
             {
                 
-
+                //Menú principal//
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\t==================================");

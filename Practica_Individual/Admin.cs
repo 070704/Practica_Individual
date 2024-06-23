@@ -37,7 +37,7 @@ namespace Practica_Individual
                 do
                 {
 
-                    
+                    //Menú del admin para acceder a el necesitas la contraseña que es admin123//
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\t==================================");
@@ -104,6 +104,7 @@ namespace Practica_Individual
                         switch (int.Parse(campos[0]))
                         {
                             case 1:
+                                //Campos que tiene el archivo importante que coincidan con el txt//
                                 Premio_Simple ps = new Premio_Simple(int.Parse(campos[0]),campos[1], campos[2], campos[3], campos[4], campos[5]);
                                 Premios.Add(ps);
                                 break;

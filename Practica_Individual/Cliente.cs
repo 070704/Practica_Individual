@@ -23,7 +23,7 @@ namespace Practica_Individual
             do
             {
 
-
+                //Menu del cliente//
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\t==================================");
